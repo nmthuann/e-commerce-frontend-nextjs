@@ -1,9 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    // reactStrictMode: true,
-    // compiler: {
-    //     styledComponents: true,
-    // },
+    images: {
+        domains: ["tailwindui.com", "firebasestorage.googleapis.com"],
+    },
 };
 
 module.exports = nextConfig;

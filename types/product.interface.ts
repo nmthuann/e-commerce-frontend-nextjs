@@ -16,6 +16,6 @@ export interface Product {
   origin: string;
   warranty_time: number;
   images: Image[];
-  category: Category;
-  discount: Discount;
+  __category__: Category;
+  __discount__: Discount;
 }
