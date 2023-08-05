@@ -15,7 +15,7 @@ interface ErrorResponse {
   headers: any;
 }
 
-const useAxios = (configObj: UseAxiosProps) => {
+const useAxios = async (configObj: UseAxiosProps) => {
   const { axiosInstance, method, url, requestConfig = {} } = configObj;
 
   const [response, setResponse] = useState<any | null>(null);

@@ -1,16 +1,54 @@
+// 'use client'
 "use client"
-
 import * as React from "react"
-
 import { cn } from "@/lib/utils"
 import { Icons } from "@/components/icons"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { useRouter } from "next/router"
+import { useEffect, useState } from "react"
+import { LoginService } from "@/apis/login.service"
 
-interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
+interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {
 
-export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
+}
+
+export async function UserAuthForm({ className, ...props }: UserAuthFormProps) {
+
+  // const router = useRouter();
+
+  // const [formData, setFormData] = useState({
+  //       email: "",
+  //       password: "",
+  //   });
+
+  //  //Call API Login 
+  //   const { loginResponse, loginIsLoading, loginError, callLoginRefetch } = await LoginService();
+
+    // useEffect(() => {
+    //     if (loginResponse) {
+    //         console.log(loginResponse);
+    //         localStorage.setItem('token', loginResponse.access_token);
+    //         router.push('/admin');
+    //     }
+    //     else if (loginError) {
+    //         console.log(loginError);
+    //         alert('Login Failed');
+    //     }
+    // }, [loginResponse, loginError])
+
+    // const handleOnSubmit = (e: any) => {
+    //     e.preventDefault();
+    //     callLoginRefetch(formData);
+    // }
+    // const handleChange = (e: any) => {
+    //     setFormData((prevState) => ({
+    //         ...prevState,
+    //         [e.target.name]: e.target.value,
+    //     }));
+    // };
+
   const [isLoading, setIsLoading] = React.useState<boolean>(false)
 
   async function onSubmit(event: React.SyntheticEvent) {
@@ -19,12 +57,13 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
 
     setTimeout(() => {
       setIsLoading(false)
-    }, 3000)
+    }, 10000)
   }
 
   return (
     <div className={cn("grid gap-6", className)} {...props}>
-      <form onSubmit={onSubmit}>
+      {/* onSubmit */}
+      <form onSubmit={() => {}}>
         <div className="grid gap-2">
           <div className="grid gap-1">
             <Label className="sr-only" htmlFor="email">

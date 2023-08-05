@@ -6,6 +6,7 @@ import Container from "@/components/ui/container";
 import getCategories from "@/actions/get-categories";
 import NavbarActions from "@/components/navbar-actions";
 import Button from "./ui/button-actions";
+import { UserNav } from "@/components/user-nav";
 // import NavbarActions from "@/components/navbar-actions";
 // import getCategories from "@/actions/get-categories";
 
@@ -20,7 +21,10 @@ const Navbar = async () => {
             <p className="font-bold text-xl">STORE</p>
           </Link>
           <MainNav data={categories} />
+
           <NavbarActions />
+               
+          <UserNav/>
           {/* <div>
             <Button/>
           </div> */}

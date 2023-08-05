@@ -15,7 +15,7 @@ interface ErrorResponse {
   headers: any;
 }
 
-const useAxiosFunction = () => {
+const useAxiosFunction = ()  =>  {
   const [response, setResponse] = useState<any | null>(null);
   const [error, setError] = useState<ErrorResponse | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
