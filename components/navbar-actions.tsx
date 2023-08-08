@@ -6,6 +6,7 @@ import Button from "@/components/ui/button-actions";
 import { useEffect, useState } from "react";
 // import router from "next/router";
 import { useRouter } from "next/navigation";
+import useCart from "@/hooks/use-cart";
 
 
 const NavbarActions  = () =>{
@@ -16,7 +17,7 @@ const NavbarActions  = () =>{
     }, []);
 
     const router = useRouter();
-    // const cart = useCart();
+    const cart = useCart();   //   hook cart
 
     if (!isMounted) {
         return null;
@@ -33,8 +34,8 @@ const NavbarActions  = () =>{
             >
             </ShoppingBag>
             <span className="ml-2 text-sm font-medium text-white">
-                {/* {cart.items.length} */} 
-                0
+                {cart.items.length} 
+                {/* 0 */}
             </span>
         </Button>
         </div>

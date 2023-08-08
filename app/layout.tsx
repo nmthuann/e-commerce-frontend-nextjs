@@ -4,6 +4,7 @@ import { Urbanist } from 'next/font/google'
 import Footer from '@/components/footer'
 import dynamic from 'next/dynamic'
 import Navbar from '@/components/navbar'
+import ToastProvider from '@/providers/toast-provider'
 
 
 const font = Urbanist({ subsets: ['latin'] })
@@ -24,6 +25,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={font.className}>
+        <ToastProvider></ToastProvider>
         <Navbar/>
         {children}
        {/* <DynamicSidebarWithNoSSR/> */}

@@ -5,6 +5,7 @@ import getProduct from '@/actions/get-product';
 import getProducts from '@/actions/get-products';
 import Container from '@/components/ui/container';
 import getProductsByCategoryId from '@/actions/get-products-by-categoryId';
+import Information from '@/components/information';
 
 export const revalidate = 0;
 
@@ -40,7 +41,7 @@ const ProductPage: React.FC<ProductPageProps> = async ({
             <div className="mt-10 px-4 sm:mt-16 sm:px-0 lg:mt-0">
               
               {/* Information */}
-              <Info data={product} />
+              <Information data={product} />
             </div>
           </div>
           <hr className="my-10" />

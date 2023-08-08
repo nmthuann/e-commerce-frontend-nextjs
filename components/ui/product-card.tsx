@@ -1,32 +1,45 @@
 "use client";
 
-import { Product } from "@/types/product.interface";
 import Image from "next/image";
-import IconButton from "@/components/ui/icon-button";
+import { MouseEventHandler } from "react";
 import { Expand, ShoppingCart } from "lucide-react";
-import Currency from "@/components/ui/currency";
 import { useRouter } from "next/navigation";
+
+import Currency  from "@/components/ui/currency";
+import IconButton  from "@/components/ui/icon-button";
+import usePreviewModal from "@/hooks/use-preview-modal";
+import useCart from "@/hooks/use-cart";
+import { Product } from "@/types/product.interface";
 
 interface ProductCard {
   data: Product
 }
 
 const ProductCard: React.FC<ProductCard> = ({
-    data
+  data
 }) => {
-
+  const previewModal = usePreviewModal();
+  const cart = useCart();  //  hoook -> use-cart
   const router = useRouter();
-  const handleClick  = () => {
 
-    //  product or products
+  const handleClick = () => {
     router.push(`/product/${data?.product_id}`);
-  }
+  };
 
+  const onPreview: MouseEventHandler<HTMLButtonElement> = (event) => {
+    event.stopPropagation();
 
+    previewModal.onOpen(data);
+  };
 
-    return ( 
-        // onClick={handleClick}
-        <div onClick={handleClick} className="bg-white group cursor-pointer rounded-xl border p-3 space-y-4">
+  const onAddToCart: MouseEventHandler<HTMLButtonElement> = (event) => {
+    event.stopPropagation();
+
+    cart.addItem(data);
+  };
+  
+  return ( 
+    <div onClick={handleClick} className="bg-white group cursor-pointer rounded-xl border p-3 space-y-4">
       {/* Image & actions */}
       <div className="aspect-square rounded-xl bg-gray-100 relative">
         <Image 
@@ -38,11 +51,11 @@ const ProductCard: React.FC<ProductCard> = ({
         <div className="opacity-0 group-hover:opacity-100 transition absolute w-full px-6 bottom-5">
           <div className="flex gap-x-6 justify-center">
             <IconButton 
-              onClick={() => {}}  //onPreview
+              onClick={onPreview} 
               icon={<Expand size={20} className="text-gray-600" />}
             />
             <IconButton
-              onClick={() => {}} //onAddToCart
+              onClick={onAddToCart} 
               icon={<ShoppingCart size={20} className="text-gray-600" />} 
             />
           </div>
@@ -55,12 +68,10 @@ const ProductCard: React.FC<ProductCard> = ({
       </div>
       {/* Price & Reiew */}
       <div className="flex items-center justify-between">
-        <Currency value={data?.price} />  
-        {/* Giá chưa giảm */}
+        <Currency value={data?.price} />
       </div>
     </div>
-
-    );
+  );
 }
- 
+
 export default ProductCard;

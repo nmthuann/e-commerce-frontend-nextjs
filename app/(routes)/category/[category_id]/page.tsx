@@ -7,14 +7,14 @@ import ProductCard from '@/components/ui/product-card';
 import getProducts from "@/actions/get-products";
 import getCategory from '@/actions/get-category';
 
-import Filter from './components/filter-brand';
-import MobileFilters from './components/mobile-filters';
+// import Filter from './components/filter-brand';
+// import MobileFilters from './components/mobile-filters';
 
 import getProductsByCategoryId from '@/actions/get-products-by-categoryId';
-import getProductBrandsByCategoryId from '@/actions/get-product-brand';
+// import getProductBrandsByCategoryId from '@/actions/get-product-brand';
 import Billboard from '@/components/ui/billboard';
 import NoResults from '@/components/ui/no-result';
-import { PriceSelector } from './components/price-selector';
+// import { PriceSelector } from './components/price-selector';
 
 export const revalidate = 0;
 

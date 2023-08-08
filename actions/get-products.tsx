@@ -19,7 +19,7 @@ const getProducts = async (): Promise<Product[]> => {
 
   const res = await fetch(URL);
 
-  return res.json();
+  return await res.json();
 };
 
 export default getProducts;

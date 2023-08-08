@@ -17,6 +17,6 @@ const getProductsByCategoryId = async (category_id?: number): Promise<Product[]>
 
   const res = await fetch(`${URL}category_id=${category_id}`);
 
-  return res.json();
+  return await res.json();
 };
 export default getProductsByCategoryId;
