@@ -133,18 +133,22 @@ const Summary = () => {
   const onCheckout = async () => {
     const shipping_id = shippingOptions.find((shipping) => 
       shipping.shipping_name.toUpperCase() === value.toUpperCase())?.shipping_id;
-
     const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/checkout`, {
       productIds: items.map((item) => item.product_id),
       shipping_id: shipping_id,
       discount_id: discountCode,
-      total_price: totalWithShipping,
-    },{
       
+      // total_price: totalWithShipping,
     });
-
-    window.location = response.data.url;
+    console.log(response);
+    window.location = await response.data
+    console.log(response.data)
+    // window.location.assign("https://translate.google.com/");
+    //window.location.assign(`${await response.data}`);
+   
+   
   }
+  
 
 
   return ( 
